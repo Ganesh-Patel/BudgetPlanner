@@ -1,0 +1,100 @@
+/* Global styles and theme-related CSS */
+:root {
+  --header-bg-light: #fff;
+  --link-color-light: #000;
+  --ball-bg-light: #fff;
+  --body-bg-light: linear-gradient(to top right, #F1F1F1 50%, #9EE8FF 50%);
+  --body-color-light: #000;
+
+  --header-bg-dark: #333;
+  --link-color-dark: #fff;
+  --ball-bg-dark: #333;
+  --body-bg-dark: linear-gradient(to top right, #5C5C5C 50%, #1B1B1B 50%);
+  --body-color-dark: #fff;
+}
+
+/* Light Theme */
+[data-theme='light'] {
+  --header-bg: var(--header-bg-light);
+  --link-color: var(--link-color-light);
+  --ball-bg: var(--ball-bg-light);
+  --body-bg: var(--body-bg-light);
+  --body-color: var(--body-color-light);
+}
+
+/* Dark Theme */
+[data-theme='dark'] {
+  --header-bg: var(--header-bg-dark);
+  --link-color: var(--link-color-dark);
+  --ball-bg: var(--ball-bg-dark);
+  --body-bg: var(--body-bg-dark);
+  --body-color: var(--body-color-dark);
+}
+
+body {
+  font-family: sans-serif;
+  background: var(--body-bg);
+  color: var(--body-color);
+  transition: background 0.3s, color 0.3s;
+  min-height: 100vh; /* Ensure the body takes up the full height */
+  margin: 0; /* Remove default body margin */
+}
+
+header {
+  background-color: var(--header-bg);
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar {
+  display: flex;
+  gap: 20px;
+}
+
+.navLink {
+  color: var(--link-color);
+  text-decoration: none;
+}
+
+.themeToggle {
+  display: flex;
+  align-items: center;
+}
+
+.checkbox {
+  display: none;
+}
+
+.checkboxLabel {
+  background-color: #4F2EE8;
+  width: 50px;
+  height: 26px;
+  border-radius: 50px;
+  position: relative;
+  padding: 2px 2px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ball {
+  width: 25px;
+  height: 25px;
+  background-color: var(--ball-bg);
+  border-radius: 50%;
+  position: absolute;
+  transition: transform 0.3s;
+}
+
+.checkbox:checked + .checkboxLabel .ball {
+  transform: translateX(20px);
+}
+
+.icon {
+  font-size: 18px;
+  margin: 0 5px;
+  color: rgba(246, 246, 35, 0.837);
+}

@@ -1,0 +1,91 @@
+.header {
+    background-color: var(--header-bg);
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .brand {
+    flex: 1;
+  }
+  
+  .appName {
+    margin: 0;
+    font-size: 24px;
+    color: var(--link-color);
+  }
+  .leftNav{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  .navbar {
+    display: flex;
+    gap: 20px;
+    flex: 2;
+    justify-content: center;
+  }
+  
+  .navLink {
+    color: var(--link-color);
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s;
+  }
+  
+  .navLink:hover {
+    color: var(--link-hover-color);
+  }
+  
+  .themeToggle {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .themeText {
+    margin-right: 10px;
+    font-size: 14px;
+    color: var(--link-color);
+  }
+  
+  .checkbox {
+    display: none;
+  }
+  
+  .checkboxLabel {
+    background-color: #4F2EE8;
+    width: 50px;
+    height: 26px;
+    border-radius: 50px;
+    position: relative;
+    padding: 2px 2px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .ball {
+    width: 25px;
+    height: 25px;
+    background-color: white;
+    border-radius: 50%;
+    position: absolute;
+    transition: transform 0.3s;
+  }
+  
+  .checkbox:checked + .checkboxLabel .ball {
+    transform: translateX(20px);
+  }
+  
+  .icon {
+    font-size: 18px;
+    margin: 0 5px;
+    color: rgba(246, 246, 35, 0.837);
+  }
+  
+ 
+  
