@@ -1,7 +1,11 @@
 import React from 'react';
 import style from './Header.module.css';
+import { MyContext } from '../MyContext';
+import { useContext } from 'react';
 
-function Header({ isDarkMode, onToggleTheme }) {
+
+function Header() {
+  const {isDarkMode, toggleTheme}=useContext(MyContext)
   return (
     <header className={style.header}>
         <div className={style.leftNav}>
@@ -21,7 +25,7 @@ function Header({ isDarkMode, onToggleTheme }) {
           id="theme-toggle"
           className={style.checkbox}
           checked={isDarkMode}
-          onChange={onToggleTheme}
+          onChange={toggleTheme}
         />
         <label htmlFor="theme-toggle" className={style.checkboxLabel}>
           <span className={style.ball}></span>

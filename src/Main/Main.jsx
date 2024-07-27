@@ -1,37 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React, { useContext } from 'react';
 import style from './main.module.css';
+import { MyContext } from '../MyContext';
 
 function Main() {
-  const [budget, setBudget] = useState(1000); // Initial total budget
-  const [detail, setDetail] = useState('');
-  const [amount, setAmount] = useState('');
-  let expenses = JSON.parse(localStorage.getItem('expenses')) || [];
-
-  const calculateTotalSpent = () => {
-    return expenses.reduce((acc, expense) => acc + parseFloat(expense.amount), 0);
-  };
-
-  const addExpense = () => {
-    if (detail && amount) {
-      const newExpense = { detail, amount: parseFloat(amount) };
-      expenses.push(newExpense);
-      localStorage.setItem('expenses', JSON.stringify(expenses));
-      setDetail('');
-      setAmount('');
-      // Force re-render
-      setBudget(budget => budget);
-    }
-  };
-
-  const deleteExpense = (index) => {
-    expenses = expenses.filter((_, i) => i !== index);
-    localStorage.setItem('expenses', JSON.stringify(expenses));
-    // Force re-render
-    setBudget(budget => budget);
-  };
-
-  const totalSpent = calculateTotalSpent();
-  const remainingBudget = budget - totalSpent;
+  const { 
+    budget, 
+    detail, 
+    amount, 
+    setDetail, 
+    setAmount, 
+    expenses, 
+    addExpense, 
+    deleteExpense, 
+    totalSpent, 
+    remainingBudget 
+  } = useContext(MyContext);
 
   return (
     <div className={style.mainSection}>
@@ -46,7 +29,6 @@ function Main() {
         <div>
           <h2>Spent So Far: ₹ {totalSpent}</h2>
         </div>
-
       </div>
       <div className={style.expenseList}>
         {expenses.map((expense, index) => (
@@ -54,7 +36,6 @@ function Main() {
             <p className={style.expenseDetail}>{expense.detail}</p>
             <p className={style.expenseAmount}>₹ {expense.amount}</p>
             <button className={style.deleteButton} onClick={() => deleteExpense(index)}>Delete</button>
-            
           </div>
         ))}
       </div>
