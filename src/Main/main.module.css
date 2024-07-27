@@ -1,43 +1,105 @@
 .mainSection {
-    min-height: 92vh;
-    padding: 20px;
-    background-color: var(--body-bg);
-    color: var(--body-color);
-    transition: background-color 0.3s, color 0.3s;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-  
-  textarea {
-    width: 90%;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  .buttonGroup {
-    margin-bottom: 20px;
-  }
-  
-  button {
-    padding: 10px 15px;
-    margin: 5px;
-    border: none;
-    border-radius: 4px;
-    background-color: #007BFF;
-    color: white;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  button:hover {
-    background-color: #0056b3;
-  }
-  
-  button:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
-  }
-  
+  min-height: 92vh;
+  padding: 20px;
+  background-color: var(--body-bg);
+  color: var(--body-color);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.budgetInfo {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.budgetInfo div {
+  background-color: var(--header-bg);
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 10px;
+  flex: 1 1 30%;
+  text-align: center;
+}
+
+.expenseList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.expenseCard {
+  background-color: var(--header-bg);
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.expenseDetail {
+  flex: 1 1 50%;
+  text-align: left;
+  padding: 5px;
+}
+
+.expenseAmount {
+  flex: 1 1 20%;
+  text-align: center;
+  padding: 5px;
+}
+
+.deleteButton {
+  flex: 1 1%;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: #FF4B4B;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  text-align: center;
+}
+
+.deleteButton:hover {
+  background-color: #cc0000;
+}
+
+.inputSection {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.inputSection input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  flex: 1 1 45%;
+}
+
+.inputSection button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  background-color: #007BFF;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  flex: 1 1 4%;
+  text-align: center;
+}
+
+.inputSection button:hover {
+  background-color: #0056b3;
+}
+
+.saveButton {
+  padding: 10px;
+  width: calc(100% - 20px);
+}

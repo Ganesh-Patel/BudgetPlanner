@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Header from './Header/Header';
 import Footer from './Footer/Footer';
 import Main from './Main/Main'
-import './App.css'; // Import global styles
+import './App.css'; 
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(() => {

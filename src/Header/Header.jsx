@@ -6,7 +6,7 @@ function Header({ isDarkMode, onToggleTheme }) {
     <header className={style.header}>
         <div className={style.leftNav}>
       <div className={style.brand}>
-        <h2 className={style.appName}>TextUtils</h2>
+        <h2 className={style.appName}>Goodbudget</h2>
       </div>
       <nav className={style.navbar}>
         <a href="#home" className={style.navLink}>Home</a>

@@ -1,58 +1,78 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import style from './main.module.css';
 
 function Main() {
-  const [data, setData] = useState("");
+  const [budget, setBudget] = useState(1000); // Initial total budget
+  const [detail, setDetail] = useState('');
+  const [amount, setAmount] = useState('');
+  let expenses = JSON.parse(localStorage.getItem('expenses')) || [];
 
-  const converToUppercase = () => {
-    setData(data.toUpperCase());
+  const calculateTotalSpent = () => {
+    return expenses.reduce((acc, expense) => acc + parseFloat(expense.amount), 0);
   };
 
-  const converToLowercase = () => {
-    setData(data.toLowerCase());
-  };
-
-  const trimS = () => {
-    let temp = data.trim();
-    let newArray = temp.split(" ");
-    let considered = [];
-    for (let item of newArray) {
-      if (item.length > 0) {
-        considered.push(item);
-      }
+  const addExpense = () => {
+    if (detail && amount) {
+      const newExpense = { detail, amount: parseFloat(amount) };
+      expenses.push(newExpense);
+      localStorage.setItem('expenses', JSON.stringify(expenses));
+      setDetail('');
+      setAmount('');
+      // Force re-render
+      setBudget(budget => budget);
     }
-    setData(considered.join(' '));
   };
+
+  const deleteExpense = (index) => {
+    expenses = expenses.filter((_, i) => i !== index);
+    localStorage.setItem('expenses', JSON.stringify(expenses));
+    // Force re-render
+    setBudget(budget => budget);
+  };
+
+  const totalSpent = calculateTotalSpent();
+  const remainingBudget = budget - totalSpent;
 
   return (
     <div className={style.mainSection}>
-      <h1>TextUtis - Word Counter, Charecter Counter, Remove Extra Space</h1>
-      <h2>Enter Your Text Here:</h2>
-      <textarea 
-        cols="100" 
-        value={data} 
-        rows="10" 
-        onChange={(e) => setData(e.currentTarget.value)} 
-      />
-      <div className={style.buttonGroup}>
-        <button onClick={converToUppercase}>Convert To Upper case</button>
-        <button onClick={converToLowercase}>Convert To Lower case</button>
-        <button onClick={() => setData("")}>Clear Text</button>
-        <button onClick={() => navigator.clipboard.writeText(data)}>Copy To Clipboard</button>
-        <button onClick={trimS}>Remove Extra Spaces</button>
-      </div>
-      <hr />
+      <h1 style={{ textAlign: 'center' }}>My Budget Planner</h1>
+      <div className={style.budgetInfo}>
+        <div>
+          <h2>Total Budget: ₹ {budget}</h2>
+        </div>
+        <div>
+          <h2>Remaining Budget: ₹ {remainingBudget}</h2>
+        </div>
+        <div>
+          <h2>Spent So Far: ₹ {totalSpent}</h2>
+        </div>
 
-      <p>Number of words: {data.trim().split(/\s+/).length}</p>
-      <p>Number of characters: {data.length}</p>
-      <p>Avg time to read in seconds: {(data.trim().split(/\s+/).length) / 3}</p>
-      <h1 style={{textAlign:'center'}}> Preview</h1>
-      <textarea 
-        cols="100" 
-        value={data} 
-        rows="10" 
-        readOnly
-      />
+      </div>
+      <div className={style.expenseList}>
+        {expenses.map((expense, index) => (
+          <div key={index} className={style.expenseCard}>
+            <p className={style.expenseDetail}>{expense.detail}</p>
+            <p className={style.expenseAmount}>₹ {expense.amount}</p>
+            <button className={style.deleteButton} onClick={() => deleteExpense(index)}>Delete</button>
+            
+          </div>
+        ))}
+      </div>
+      <div className={style.inputSection}>
+        <input
+          type="text"
+          placeholder="Detail"
+          value={detail}
+          onChange={(e) => setDetail(e.target.value)}
+        />
+        <input
+          type="number"
+          placeholder="Amount"
+          value={amount}
+          onChange={(e) => setAmount(e.target.value)}
+        />
+        <button className={style.saveButton} onClick={addExpense}>Save</button>
+      </div>
     </div>
   );
 }
