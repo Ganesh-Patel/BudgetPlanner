@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Header from './Header/Header';
+import Footer from './Footer/Footer';
+import Main from './Main/Main'
 import './App.css'; // Import global styles
 
 function App() {
@@ -19,6 +21,8 @@ function App() {
   return (
     <div>
       <Header isDarkMode={isDarkMode} onToggleTheme={toggleTheme} />
+      <Main />
+      <Footer />
       {/* Other components */}
     </div>
   );
