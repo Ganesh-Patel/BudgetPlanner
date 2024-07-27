@@ -23,6 +23,25 @@
   text-align: center;
 }
 
+.budgetInput {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.searchSection {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.searchInput {
+  padding: 10px;
+  width: 100%;
+  max-width: 300px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
 .expenseList {
   display: flex;
   flex-direction: column;
@@ -102,4 +121,40 @@
 .saveButton {
   padding: 10px;
   width: calc(100% - 20px);
+}
+
+/* New styles for save button */
+.saveBtn {
+  padding: 6px 10px;
+  margin-left: 1rem;
+  border: none;
+  border-radius: 6px;
+  background-color: #4CAF50;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  font-weight: bold;
+}
+
+.saveBtn:hover {
+  background-color: #45a049;
+  transform: scale(1.05);
+}
+
+/* New styles for edit button */
+.editButton {
+  width: 50%;
+  padding: 8px 10px;
+  border: none;
+  border-radius: 6px;
+  background-color: #007BFF;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  font-weight: bold;
+}
+
+.editButton:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
 }
